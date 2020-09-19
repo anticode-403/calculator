@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Calculator
 {
-  public abstract class Command
+  public interface Command
   {
-    public string name;
-    public string[] shorthands;
-    public string helpMessage;
+    public string name { get; }
+    public string[] shorthands { get; }
+    public string helpMessage { get; }
 
     public abstract void RunCommand(params string[] args);
   }

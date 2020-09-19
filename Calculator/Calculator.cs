@@ -14,7 +14,8 @@ namespace Calculator
     {
       Console.WriteLine("Calculator awaiting input...");
       Console.WriteLine("You can type 'help' to get all commands.");
-      string input = System.Console.ReadLine();
+      string input = Console.ReadLine();
+      CommandParser.ParseCommand(input).RunCommand();
       MainLoop();
     }
   }
