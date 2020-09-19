@@ -6,18 +6,16 @@ namespace Calculator
   {
     static void Main()
     {
+      CommandParser.GetCommands();
+      MainLoop();
+    }
+
+    static void MainLoop()
+    {
       Console.WriteLine("Calculator awaiting input...");
-      string input = Console.ReadLine();
-      TreeNode equation = null;
-      try
-      {
-        equation = TreeNode.BuildTree(input);
-      } catch(Exception error)
-      {
-        Console.WriteLine(error.Message);
-      }
-      Console.WriteLine(Operations.SolveTreeNode(equation));
-      Main();
+      Console.WriteLine("You can type 'help' to get all commands.");
+      string input = System.Console.ReadLine();
+      MainLoop();
     }
   }
 }
