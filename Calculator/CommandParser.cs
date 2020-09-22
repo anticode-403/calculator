@@ -9,41 +9,26 @@ namespace Calculator
 {
   public static class CommandParser
   {
-    public static Dictionary<string, Command> commandDictionary { get; private set; } = new Dictionary<string, Command>();
+    public static List<Command> commandList { get; private set; } = new List<Command>();
 
-    public static Dictionary<string, Command> GetCommands(params object[] constructorArgs)
+    public static List<Command> GetCommands(params object[] constructorArgs)
     {
-      Dictionary<string, Command> commands = new Dictionary<string, Command>();
+      List<Command> commands = new List<Command>();
       foreach (Type commandType in
         Assembly.GetAssembly(typeof(Command)).GetTypes()
         .Where(myCommand => myCommand.IsClass && !myCommand.IsAbstract && !myCommand.IsInterface && myCommand.IsSubclassOf(typeof(Command))))
       {
         Command command = (Command)Activator.CreateInstance(commandType, constructorArgs);
-        commands.Add(command.name, command);
+        commands.Add(command);
       }
-      commandDictionary = commands;
+      commandList = commands;
       return commands;
     }
 
     public static Command ParseCommand(string commandName)
     {
-      Command command = null;
-      try
-      {
-        command = commandDictionary[commandName];
-        return command;
-      } catch
-      {
-        foreach (Command cmd in commandDictionary.Values)
-        {
-          if (Array.Exists(cmd.shorthands, shorthand => commandName == shorthand))
-          {
-            command = cmd;
-            return command;
-          }
-        }
-        throw new Exception($"No command has the name or shorthand {commandName}.");
-      }
+      foreach (Command cmd in commandList) if (cmd.name == commandName | Array.IndexOf(cmd.shorthands, commandName) != -1) return cmd;
+      throw new Exception($"No command has the name or shorthand {commandName}.");
     }
   }
 }

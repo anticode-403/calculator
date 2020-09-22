@@ -21,11 +21,12 @@ namespace Calculator.Commands
         }
       } else
       {
-        string commandList = "";
-        foreach (string commandName in CommandParser.commandDictionary.Keys)
+        string message = "";
+        foreach (Command command in CommandParser.commandList)
         {
-          commandList += $"{commandName} - {CommandParser.commandDictionary[commandName].helpMessage}";
+          message += $"{command.name} - {command.helpMessage}\n";
         }
+        Console.WriteLine(message);
       }
       throw new NotImplementedException();
     }
