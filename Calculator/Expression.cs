@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Calculator
 {
-  public interface Command
+  public interface Expression
   {
     public string name { get; }
     public string[] shorthands { get; }
     public string helpMessage { get; }
 
-    public abstract void RunCommand(params string[] args);
+    public void RunExpression(params string[] args);
   }
 }

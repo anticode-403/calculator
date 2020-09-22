@@ -6,7 +6,7 @@ namespace Calculator
   {
     static void Main()
     {
-      CommandParser.GetCommands();
+      ExpressionParser.GetCommands();
       MainLoop();
     }
 
@@ -15,7 +15,7 @@ namespace Calculator
       Console.WriteLine("Calculator awaiting input...");
       Console.WriteLine("You can type 'help' to get all commands.");
       string input = Console.ReadLine();
-      CommandParser.ParseCommand(input).RunCommand();
+      ExpressionParser.ParseExpression(input).RunExpression();
       MainLoop();
     }
   }
