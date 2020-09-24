@@ -14,13 +14,14 @@ namespace Calculator.Commands
     {
       if (args.Length > 0)
       {
-        string returnMessage = "";
+        string message = "";
         foreach (string arg in args)
         {
           Expression command = ExpressionParser.ParseExpression(arg);
-          returnMessage += $"{command.name} - {command.helpMessage}\n";
-          Console.WriteLine(command.helpMessage);
+          message += $"{command.name} - {command.helpMessage}\n";
         }
+        string returnMessage = message.Trim();
+        Console.WriteLine(returnMessage);
         return returnMessage;
       } else
       {
@@ -29,8 +30,9 @@ namespace Calculator.Commands
         {
           message += $"{command.name} - {command.helpMessage}\n";
         }
-        Console.WriteLine(message);
-        return message;
+        string returnMessage = message.Trim();
+        Console.WriteLine(returnMessage);
+        return returnMessage;
       }
     }
   }
