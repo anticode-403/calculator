@@ -58,7 +58,7 @@ namespace Calculator
     public static string ParseAndEvaluateExpression(string input)
     {
       // Remove the first opening paren.
-      if (input.StartsWith('(')) input.Substring(1);
+      if (input.StartsWith('(')) input = input.Substring(1);
       List<string> expressionPieces = new List<string>();
       string currentString = "";
       char lastImportantChar = ' ';
@@ -80,6 +80,7 @@ namespace Calculator
           if (lastImportantChar != '(')
           {
             expressionPieces.Add(currentString);
+            currentString = "";
             break;
           }
           lastImportantChar = currentCharacter;
@@ -106,14 +107,7 @@ namespace Calculator
       }
       Expression expression = ParseExpression(expressionPieces[0]);
       expressionPieces.RemoveAt(0);
-      if (expressionPieces.Count > 0)
-      {
-        return expression.RunExpression(expressionPieces.ToArray()).ToString();
-      }
-      else
-      {
-        return expression.RunExpression().ToString();
-      }
+      return expression.RunExpression(expressionPieces.ToArray()).ToString();
     }
   }
 }
