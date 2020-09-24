@@ -6,16 +6,16 @@ namespace Calculator
   {
     static void Main()
     {
+      ExpressionParser.GetCommands();
       Console.WriteLine("Calculator awaiting input...");
       Console.WriteLine("You can type 'help' to get all commands.");
-      ExpressionParser.GetCommands();
       MainLoop();
     }
 
     static void MainLoop()
     {
       string input = Console.ReadLine();
-      ExpressionParser.ParseExpression(input).RunExpression();
+      ExpressionParser.ParseAndEvaluateExpression(input);
       MainLoop();
     }
   }
