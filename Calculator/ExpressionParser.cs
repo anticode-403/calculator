@@ -99,7 +99,7 @@ namespace Calculator
           currentString += currentCharacter;
         }
       }
-      if (expressionPieces.Count == 0 && currentString.Length > 0) expressionPieces.Add(currentString);
+      if (currentString.Length > 0) expressionPieces.Add(currentString);
       if (lastImportantChar == '(')
       {
         throw new Exception("Opening paren did not have a closing paren, and was not in quotations.");
