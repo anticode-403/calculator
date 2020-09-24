@@ -10,7 +10,7 @@ namespace Calculator.Expressions
     public string[] shorthands => new string[] { "?" };
     public string helpMessage => "Prints the help message of other commands using help [command], or lists all commands at once.";
 
-    public object RunExpression(params object[] args)
+    public string RunExpression(params string[] args)
     {
       if (args.Length > 0)
       {

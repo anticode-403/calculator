@@ -10,6 +10,6 @@ namespace Calculator
     public string[] shorthands { get; }
     public string helpMessage { get; }
 
-    public object RunExpression(params object[] args);
+    public string RunExpression(params string[] args);
   }
 }
