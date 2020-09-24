@@ -10,15 +10,18 @@ namespace Calculator.Commands
     public string[] shorthands => new string[] { "?" };
     public string helpMessage => "Prints the help message of other commands using help [command], or lists all commands at once.";
 
-    public void RunExpression(params string[] args)
+    public object RunExpression(params object[] args)
     {
       if (args.Length > 0)
       {
+        string returnMessage = "";
         foreach (string arg in args)
         {
           Expression command = ExpressionParser.ParseExpression(arg);
+          returnMessage += $"{command.name} - {command.helpMessage}\n";
           Console.WriteLine(command.helpMessage);
         }
+        return returnMessage;
       } else
       {
         string message = "";
@@ -27,8 +30,8 @@ namespace Calculator.Commands
           message += $"{command.name} - {command.helpMessage}\n";
         }
         Console.WriteLine(message);
+        return message;
       }
-      throw new NotImplementedException();
     }
   }
 }

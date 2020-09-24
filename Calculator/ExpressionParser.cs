@@ -16,7 +16,7 @@ namespace Calculator
       List<Expression> exressions = new List<Expression>();
       foreach (Type expressionType in
         Assembly.GetAssembly(typeof(Expression)).GetTypes()
-        .Where(myExpression => myExpression.IsClass && !myExpression.IsAbstract && !myExpression.IsInterface && myExpression.IsSubclassOf(typeof(Expression))))
+        .Where(myExpression => myExpression.GetInterfaces().Contains(typeof(Expression)) && !myExpression.IsInterface))
       {
         Expression expression = (Expression)Activator.CreateInstance(expressionType, constructorArgs);
         exressions.Add(expression);

@@ -6,14 +6,14 @@ namespace Calculator
   {
     static void Main()
     {
+      Console.WriteLine("Calculator awaiting input...");
+      Console.WriteLine("You can type 'help' to get all commands.");
       ExpressionParser.GetCommands();
       MainLoop();
     }
 
     static void MainLoop()
     {
-      Console.WriteLine("Calculator awaiting input...");
-      Console.WriteLine("You can type 'help' to get all commands.");
       string input = Console.ReadLine();
       ExpressionParser.ParseExpression(input).RunExpression();
       MainLoop();
