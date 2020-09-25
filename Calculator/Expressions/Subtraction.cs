@@ -8,7 +8,7 @@ namespace Calculator.Expressions
   {
     public string name => "sub";
     public string[] shorthands => new string[] { "-", "subtraction" };
-    public string helpMessage => "Subtracts all arguments together and returns the result.";
+    public string helpMessage => "Subtracts all arguments from first to last and returns the result.";
 
     public string RunExpression(params string[] args)
     {
