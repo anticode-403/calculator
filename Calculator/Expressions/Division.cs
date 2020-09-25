@@ -12,7 +12,10 @@ namespace Calculator.Expressions
 
     public string RunExpression(params string[] args)
     {
-      if (args.Length > 2) throw new Exception("divide command was passed more than two arguments.");
+      if (args.Length > 2)
+      {
+        throw new Exception("The Division command was passed more than two arguments.");
+      }
       double denominator = double.Parse(args[0]);
       double quotient = denominator / double.Parse(args[1]);
       Console.WriteLine(quotient);
