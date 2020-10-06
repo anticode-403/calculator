@@ -19,16 +19,16 @@ namespace Calculator
     /// <returns>A list of all expressions.</returns>
     public static List<Expression> GetCommands(params object[] constructorArgs)
     {
-      List<Expression> exressions = new List<Expression>();
+      List<Expression> expressions = new List<Expression>();
       foreach (Type expressionType in
         Assembly.GetAssembly(typeof(Expression)).GetTypes()
         .Where(myExpression => myExpression.GetInterfaces().Contains(typeof(Expression)) && !myExpression.IsInterface))
       {
         Expression expression = (Expression)Activator.CreateInstance(expressionType, constructorArgs);
-        exressions.Add(expression);
+        expressions.Add(expression);
       }
-      expressionList = exressions;
-      return exressions;
+      expressionList = expressions;
+      return expressions;
     }
 
     /// <summary>
