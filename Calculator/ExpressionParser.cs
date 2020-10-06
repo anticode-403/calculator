@@ -57,6 +57,7 @@ namespace Calculator
     /// <returns>The return of the outward-most expression.</returns>
     public static string ParseAndEvaluateExpression(string input)
     {
+      // Imminent refactor.
       // Remove the first opening paren.
       if (input.StartsWith('(')) input = input.Substring(1);
       List<string> expressionPieces = new List<string>();

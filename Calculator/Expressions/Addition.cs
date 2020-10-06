@@ -12,6 +12,7 @@ namespace Calculator.Expressions
 
     public string RunExpression(params string[] args)
     {
+      // Theoretically this should work fine, but there's some unknown issue here.
       double returnNumber = 0;
       foreach (string arg in args)
       {
