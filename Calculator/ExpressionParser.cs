@@ -31,6 +31,27 @@ namespace Calculator
       return expressions;
     }
 
+    class Scanner
+    {
+      public string[] tokens;
+      int position;
+
+      public Scanner(string input)
+      {
+        tokens = input.Split(@"((?<=\()|(?=\)))|( )");
+      }
+
+      public string get()
+      {
+        return tokens[position];
+      }
+
+      public void advance()
+      {
+        position++;
+      }
+    }
+
     /// <summary>
     /// Expects to recieve an expression name in the form of a string. ParseExpression only expects to read an expression name, and nothing more.
     /// </summary>
@@ -58,6 +79,11 @@ namespace Calculator
     public static string ParseAndEvaluateExpression(string input)
     {
       // Imminent refactor.
+      Scanner scanner = new Scanner(input);
+      foreach (string token in scanner.tokens)
+      {
+        Console.WriteLine(token);
+      }
       // Remove the first opening paren.
       if (input.StartsWith('(')) input = input.Substring(1);
       List<string> expressionPieces = new List<string>();
