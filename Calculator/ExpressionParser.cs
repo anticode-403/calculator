@@ -38,7 +38,28 @@ namespace Calculator
 
       public Scanner(string input)
       {
-        tokens = input.Split(@"((?<=\()|(?=\)))|( )");
+        /*
+         * > ( operation
+         * > > whitespace
+         * > > value
+         * > ) closing
+         * 
+         * > [ array
+         * > > > whitespace
+         * > > > value
+         * > > , value seperator
+         * > > > value
+         * > > > whitespace
+         * > ] array
+         * 
+         * > " string
+         * > > Any codepoint or character except for \" and "
+         * > " closing
+         * 
+         * > whitespace value
+         * > > value
+         * > whitespace closing
+         */
       }
 
       public string get()
