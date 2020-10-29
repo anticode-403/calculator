@@ -38,6 +38,43 @@ namespace Calculator
 
       public Scanner(string input)
       {
+        List<string> _tokens = new List<string>();
+        for (int i = 0; i < input.Length; i++)
+        {
+          string currentToken = "";
+          if (input[i] == '(')
+          {
+            do
+            {
+              currentToken += input[i];
+              i++;
+            } while (!char.IsWhiteSpace(input[i]) || input[i] == ')');
+            if (input[i] == ')')
+            {
+              currentToken += input[i];
+              _tokens.Add(currentToken);
+            }
+            else
+            {
+              _tokens.Add(currentToken);
+              currentToken = "";
+              i++;
+            }
+            
+          }
+          else if (input[i] == '[')
+          {
+            i++;
+          }
+          else if (input[i] == '"')
+          {
+            i++;
+          }
+          else if (char.IsWhiteSpace(input[i]))
+          {
+
+          }
+        }
         /*
          * > ( operation
          * > > whitespace
