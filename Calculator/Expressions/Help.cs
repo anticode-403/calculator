@@ -17,8 +17,8 @@ namespace Calculator.Expressions
         string message = "";
         foreach (string arg in args)
         {
-          Expression command = ExpressionParser.ParseExpression(arg);
-          message += $"{command.name} - {command.helpMessage}\n";
+          //Expression command = ExpressionParser.ParseExpression(arg);
+          message += $"aaaa - aaaaaa\n";
         }
         string returnMessage = message.Trim();
         Console.WriteLine(returnMessage);
